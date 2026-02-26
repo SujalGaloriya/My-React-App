@@ -1,0 +1,34 @@
+import React, { useContext, useState } from 'react'
+import './WatchItem.css'
+import { assets } from '../../assets/assets'
+import { StoreContext } from '../../Context/StoreContext';
+
+const WatchItem = ({ image, name, price, desc, id }) => {
+    const [itemCount, setItemCount] = useState(0);
+    const { cartItems, addToCart, removeFromCart, url, currency } = useContext(StoreContext);
+
+    return (
+        <div className='watch-item'>
+            <div className='watch-item-img-container'>
+                <img className='watch-item-image' src={url + "/images/" + image} alt="" />
+                {!cartItems[id]
+                    ? <img className='add' onClick={() => addToCart(id)} src={assets.add_icon_white} alt="" />
+                    : <div className="watch-item-counter">
+                        <img src={assets.remove_icon_red} onClick={() => removeFromCart(id)} alt="" />
+                        <p>{cartItems[id]}</p>
+                        <img src={assets.add_icon_green} onClick={() => addToCart(id)} alt="" />
+                    </div>
+                }
+            </div>
+            <div className="watch-item-info">
+                <div className="watch-item-name-rating">
+                    <p>{name}</p>
+                </div>
+                <p className="watch-item-desc">{desc}</p>
+                <p className="watch-item-price">{currency}{price}</p>
+            </div>
+        </div>
+    )
+}
+
+export default WatchItem

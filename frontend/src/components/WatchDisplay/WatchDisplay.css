@@ -1,0 +1,47 @@
+.watch-display{
+    margin: 40px 0;
+    text-align: center;
+    position: relative;
+    padding: 0 20px;
+}
+.watch-display h2{
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-family: Outfit;
+    position: relative;
+    display: inline-block;
+}
+.watch-display h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: #FF4C24;
+    border-radius: 2px;
+}
+.watch-display-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+    padding: 20px 0;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 768px) {
+    .watch-display h2 {
+        font-size: 1.8rem;
+    }
+    
+    .watch-display-list {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 25px;
+    }
+}
